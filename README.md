@@ -1,9 +1,23 @@
-# Start Polymer 3.0 
+# Slot hack for overcoming incompatibilities with shadow dom
+This project is a demonstration of how slots can be used to emulate light DOM behavior even
+inside arbitrarily deep shadow DOMs. Plotly is used inside of polymer3 custom elements for this demo,
+although I suspect the approach could be used with any library that is incompatible with shadow DOM.
 
-A simple Polymer 3.0 demo app. See it deployed at [start-polymer3.firebaseapp.com](https://start-polymer3.firebaseapp.com).
+Note that a script tag is appended to the DOM to import Plotly in this demo, but in a project that I have that
+uses npm to import Plotly, the slot approach still works.
 
-Please use the latest version of Chrome or Safari to view the app. It uses native [dynamic imports](https://developers.google.com/web/updates/2017/11/dynamic-import).
+[Demoing a plot being rendered inside of 4 shadow DOMs](functional-plotly-in-nested)
+[Demoing the DOM tree with nested slots](nested-slot-dom-tree)
+[Second half of Dom tree](nested-slot-dom-tree2)
 
+
+This project is forked from the [polymer3-starter project ](https://github.com/PolymerLabs/start-polymer3)
+
+.
+.
+.
+
+#Instructions from original repo for using this project on the command line:
 If you have done all this before:
 
 ```
@@ -71,109 +85,3 @@ info:    Files in this directory are available under the following URLs
 ```
 
 In the example above, you'd open http://127.0.0.1:8081.
-
-<a name="build"></a>
-
-## Build the start-polymer3 project for production
-
-To build the `start-polymer3` app: 
-
-```
-npm install
-polymer build
-```
-
-The build is output to `build/es6-unbundled`. To serve the built app locally:
-
-```
-cd build/es6-unbundled
-polymer serve
-```
-
-<a name="deploy"></a>
-
-## Deploy the start-polymer3 project
-
-You can deploy a built Polymer app to any web server. One way is to deploy with Firebase:
-
-<a name="firebase"></a>
-
-### Deploy with Firebase
-
-To deploy the app to your own Firebase project:
-
-1.  [Install the Firebase CLI tools](https://firebase.google.com/docs/cli/).
-
-    ```
-    npm install -g firebase-tools
-    firebase login
-    ```
-
-2.  From the [Firebase console](https://console.firebase.google.com/), create a Firebase project.
-
-3.  [Initialize Firebase in your project folder](https://firebase.google.com/docs/cli/#initializing_a_project_directory). 
-
-    ```
-    firebase init
-    ```
-
-    Complete the Firebase initialization process to set up your project for hosting. 
-
-    If you are prompted to
-
-    * **select Firebase CLI features**, select **Hosting**.
-    * **select a default Firebase project**, select the project you created from the Firebase console.
-    * **specify a `public` directory**, you can enter `build/es6-unbundled` to deploy the build configuration supplied with this sample project.
-    * **configure as a single-page app**, enter `Y`. 
-    * **overwrite `index.html`**, enter `N`.
-
-4.  In a text editor, open `firebase.json` from your root project folder.
-
-    `hosting.ignore` is a list of files and folders that Firebase will not deploy. Remove the `node_modules` folder from this list and save `firebase.json`.
-
-    **firebase.json: Before**
-
-    ```
-    {
-        "hosting": {
-            "public": "build/es6-unbundled",    
-            "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-            ],
-            "rewrites": [
-            {
-                "source": "**",
-                "destination": "/index.html"
-            }
-            ]
-        }
-    }
-    ```
-
-    **firebase.json: After**
-
-    ```
-    {
-        "hosting": {
-            "public": "build/es6-unbundled",
-            "ignore": [
-            "firebase.json",
-            "**/.*"
-            ],
-            "rewrites": [
-            {
-                "source": "**",
-                "destination": "/index.html"
-            }
-            ]
-        }
-    }
-    ```
-
-4.  [Deploy your project](https://firebase.google.com/docs/cli/#deployment) with Firebase.
-
-    ```
-    firebase deploy
-    ```
