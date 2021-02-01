@@ -6,9 +6,11 @@ although I suspect the approach could be used with any library that is incompati
 Note that a script tag is appended to the DOM to import Plotly in this demo, but in a project that I have that
 uses npm to import Plotly, the slot approach still works.
 
-[Demoing a plot being rendered inside of 4 shadow DOMs](functional-plotly-in-nested)
-[Demoing the DOM tree with nested slots](nested-slot-dom-tree)
-[Second half of Dom tree](nested-slot-dom-tree2)
+[Demoing a plot being rendered inside of 4 shadow DOMs](functional-plotly-in-nested.PNG)
+
+[Demoing the DOM tree with nested slots](nested-slot-dom-tree.PNG)
+
+[Second half of Dom tree](nested-slot-dom-tree2.PNG)
 
 
 This project is forked from the [polymer3-starter project ](https://github.com/PolymerLabs/start-polymer3)
